@@ -51,10 +51,10 @@ public class ScreenFragment extends Fragment {
   }
 
   @Override
-  public void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    ScreenContainer container = mScreenView.getContainer();
-    if (container.isTransitioning()) {
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    ScreenContainer container = view.getContainer();
+    if (container != null && container.isTransitioning()) {
       container.postAfterTransition(new Runnable() {
         @Override
         public void run() {
